@@ -7,6 +7,7 @@ package AxelMonroyX;
 
 import AxelMonroyX.chapter1.Question1_1_UniqueCharacters;
 import AxelMonroyX.chapter1.Question1_2_Reverse;
+import AxelMonroyX.chapter1.Question1_3_RemoveDuplicateString;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
@@ -43,7 +44,27 @@ public class TestChapter1 {
         assertEquals("eveileb ot gnihtemos ", q_reverse.reverse(" something to believe"));
         assertEquals(" eveileb ot gnihtemos ", q_reverse.reverse(" something to believe "));
         assertEquals(" ", q_reverse.reverse(" "));
+        try {
+            q_reverse.reverse(null);
+        } catch (Exception e) {
+            assertEquals(String.valueOf(new RuntimeException("Need a valid String to reverse")), String.valueOf(e));
+        }
+    }
 
-        assertEquals(String.valueOf(new RuntimeException("Need a valid String to reverse")), q_reverse.reverse(null));
+    @Test
+    public void Question_1_3() throws Exception {
+        Question1_3_RemoveDuplicateString q_removeDuplicates = new Question1_3_RemoveDuplicateString();
+        assertEquals(" d", q_removeDuplicates.removeDuplicates(" d"));
+        assertEquals(" d", q_removeDuplicates.removeDuplicates(" d "));
+        assertEquals("as", q_removeDuplicates.removeDuplicates("assaa"));
+        assertEquals("a", q_removeDuplicates.removeDuplicates("a"));
+        assertEquals("", q_removeDuplicates.removeDuplicates(""));
+
+        try {
+            q_removeDuplicates.removeDuplicates(null);
+        } catch (Exception e) {
+            assertEquals(String.valueOf(new RuntimeException("Need a valid String")), String.valueOf(e));
+        }
+
     }
 }
