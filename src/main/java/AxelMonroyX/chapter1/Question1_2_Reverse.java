@@ -7,7 +7,7 @@ package AxelMonroyX.chapter1;
 public class Question1_2_Reverse {
     public String reverse(String stringToReverse) {
         if (stringToReverse == null) {
-            return String.valueOf(new RuntimeException("Need a valid String to reverse"));
+            throw new RuntimeException("Need a valid String to reverse");
         }
         return new StringBuilder(stringToReverse).reverse().toString();
     }
