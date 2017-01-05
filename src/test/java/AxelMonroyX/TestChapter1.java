@@ -8,11 +8,11 @@ package AxelMonroyX;
 import AxelMonroyX.chapter1.Question1_1_UniqueCharacters;
 import AxelMonroyX.chapter1.Question1_2_Reverse;
 import AxelMonroyX.chapter1.Question1_3_RemoveDuplicateString;
+import AxelMonroyX.chapter1.Question_1_4_AnagramAnalyzer;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static junit.framework.TestCase.*;
+
 
 public class TestChapter1 {
 
@@ -65,6 +65,59 @@ public class TestChapter1 {
         } catch (Exception e) {
             assertEquals(String.valueOf(new RuntimeException("Need a valid String")), String.valueOf(e));
         }
+
+    }
+
+    @Test
+    public void Question_1_4() throws Exception {
+        Question_1_4_AnagramAnalyzer anagramAnalyzer = new Question_1_4_AnagramAnalyzer();
+        assertTrue(anagramAnalyzer.isAnAnagram("", ""));
+        assertTrue(anagramAnalyzer.isAnAnagram(" ", " "));
+        assertTrue(anagramAnalyzer.isAnAnagram("has", "ash"));
+        assertTrue(anagramAnalyzer.isAnAnagram("nearer", "earner"));
+        assertTrue(anagramAnalyzer.isAnAnagram("cheaters", "hectares"));
+        assertTrue(anagramAnalyzer.isAnAnagram(new String[]{"cheaters", "hectares", "teachers"}));
+        assertTrue(anagramAnalyzer.isAnAnagram(new String[]{"cheaters", "hectares"}));
+        assertFalse(anagramAnalyzer.isAnAnagram(new String[]{"cheaterss", "hectares", "teachers"}));
+        assertFalse(anagramAnalyzer.isAnAnagram("nearer", "earner1"));
+
+        String ExpectedException = String.valueOf(new RuntimeException("Need at least 2 valid words"));
+        try {
+            anagramAnalyzer.isAnAnagram(new String[]{"cheaters"});
+        } catch (Exception e) {
+            assertEquals(ExpectedException, String.valueOf(e));
+        }
+        try {
+            anagramAnalyzer.isAnAnagram(null);
+        } catch (Exception e) {
+            assertEquals(ExpectedException, String.valueOf(e));
+        }
+        try {
+            anagramAnalyzer.isAnAnagram(null, null);
+        } catch (Exception e) {
+            assertEquals(ExpectedException, String.valueOf(e));
+        }
+        try {
+            anagramAnalyzer.isAnAnagram(null, null);
+        } catch (Exception e) {
+            assertEquals(ExpectedException, String.valueOf(e));
+        }
+        try {
+            anagramAnalyzer.isAnAnagram(new String[]{});
+        } catch (Exception e) {
+            assertEquals(ExpectedException, String.valueOf(e));
+        }
+        try {
+            anagramAnalyzer.isAnAnagram(new String[]{null,null});
+        } catch (Exception e) {
+            assertEquals(ExpectedException, String.valueOf(e));
+        }
+        try {
+            anagramAnalyzer.isAnAnagram(new String[]{"s",null});
+        } catch (Exception e) {
+            assertEquals(ExpectedException, String.valueOf(e));
+        }
+
 
     }
 }
