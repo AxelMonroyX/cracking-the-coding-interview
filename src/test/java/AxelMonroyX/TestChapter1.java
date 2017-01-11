@@ -5,10 +5,7 @@ package AxelMonroyX;
  * github.com/AxelMonroyX
  */
 
-import AxelMonroyX.chapter1.Question1_1_UniqueCharacters;
-import AxelMonroyX.chapter1.Question1_2_Reverse;
-import AxelMonroyX.chapter1.Question1_3_RemoveDuplicateString;
-import AxelMonroyX.chapter1.Question_1_4_AnagramAnalyzer;
+import AxelMonroyX.chapter1.*;
 import org.junit.Test;
 
 import static junit.framework.TestCase.*;
@@ -70,7 +67,7 @@ public class TestChapter1 {
 
     @Test
     public void Question_1_4() throws Exception {
-        Question_1_4_AnagramAnalyzer anagramAnalyzer = new Question_1_4_AnagramAnalyzer();
+        Question1_4_AnagramAnalyzer anagramAnalyzer = new Question1_4_AnagramAnalyzer();
         assertTrue(anagramAnalyzer.isAnAnagram("", ""));
         assertTrue(anagramAnalyzer.isAnAnagram(" ", " "));
         assertTrue(anagramAnalyzer.isAnAnagram("has", "ash"));
@@ -108,16 +105,29 @@ public class TestChapter1 {
             assertEquals(ExpectedException, String.valueOf(e));
         }
         try {
-            anagramAnalyzer.isAnAnagram(new String[]{null,null});
+            anagramAnalyzer.isAnAnagram(new String[]{null, null});
         } catch (Exception e) {
             assertEquals(ExpectedException, String.valueOf(e));
         }
         try {
-            anagramAnalyzer.isAnAnagram(new String[]{"s",null});
+            anagramAnalyzer.isAnAnagram(new String[]{"s", null});
         } catch (Exception e) {
             assertEquals(ExpectedException, String.valueOf(e));
         }
 
+
+    }
+
+    @Test
+    public void Question_1_5() throws Exception {
+        Question1_5_ReplaceWhitespaces q_replace_whitespaces = new Question1_5_ReplaceWhitespaces();
+
+        assertEquals("%20", q_replace_whitespaces.replace_whitespaces_url_encoding_style(" "));
+        assertEquals("Hello%20world", q_replace_whitespaces.replace_whitespaces_url_encoding_style("Hello world"));
+        assertEquals("%20Hello%20world%20", q_replace_whitespaces.replace_whitespaces_url_encoding_style(" Hello world "));
+
+        assertEquals("", q_replace_whitespaces.replace_whitespaces_url_encoding_style(null));
+        assertEquals("", q_replace_whitespaces.replace_whitespaces_url_encoding_style(""));
 
     }
 }
