@@ -6,7 +6,7 @@ import java.util.Arrays;
  * Created by axel on 5/01/17.
  * github.com/AxelMonroyX
  */
-public class Question_1_4_AnagramAnalyzer {
+public class Question1_4_AnagramAnalyzer {
     public boolean isAnAnagram(String[] words) {
         boolean isAnagram = true;
         if (words == null || words.length <= 1 || words[0] == null) {
