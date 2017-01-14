@@ -8,6 +8,8 @@ package AxelMonroyX;
 import AxelMonroyX.chapter1.*;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static junit.framework.TestCase.*;
 
 
@@ -128,6 +130,52 @@ public class TestChapter1 {
 
         assertEquals("", q_replace_whitespaces.replace_whitespaces_url_encoding_style(null));
         assertEquals("", q_replace_whitespaces.replace_whitespaces_url_encoding_style(""));
+
+    }
+
+    @Test
+    public void Question_1_7() throws Exception {
+        Question1_7_SetZeroColumnRow q_setZero = new Question1_7_SetZeroColumnRow();
+
+        int[][] originalMatrix = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+        int[][] expectedMatrix = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+        assertTrue(Arrays.deepEquals(expectedMatrix, q_setZero.setZero(originalMatrix)));
+
+
+        originalMatrix = new int[][]{
+                {1, 2, 3},
+                {4, 0, 6},
+                {7, 8, 9}
+        };
+        expectedMatrix = new int[][]{
+                {1, 0, 3},
+                {0, 0, 0},
+                {7, 0, 9}
+        };
+        assertTrue(Arrays.deepEquals(expectedMatrix, q_setZero.setZero(originalMatrix)));
+
+        originalMatrix = new int[][]{
+                {1, 2, 3},
+                {4, 5, 6},
+                {0, 8, 9}
+        };
+        expectedMatrix = new int[][]{
+                {0, 2, 3},
+                {0, 5, 6},
+                {0, 0, 0}
+        };
+        assertTrue(Arrays.deepEquals(expectedMatrix, q_setZero.setZero(originalMatrix)));
+        assertFalse(Arrays.deepEquals(expectedMatrix, q_setZero.setZero(null)));
+        assertTrue(Arrays.deepEquals(new int[0][0], q_setZero.setZero(null)));
+
 
     }
 }
